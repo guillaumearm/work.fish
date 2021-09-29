@@ -12,12 +12,12 @@ alias _blue "set_color blue"
 alias _purple "set_color purple"
 alias _green "set_color green"
 
-set -l normal (normal)
-set -l yellow (yellow)
-set -l red (red)
-set -l blue (blue)
-set -l purple (purple)
-set -l green (green)
+set -l normal (_normal)
+set -l yellow (_yellow)
+set -l red (_red)
+set -l blue (_blue)
+set -l purple (_purple)
+set -l green (_green)
 
 ### UTILS ###
 function _prepare_worklist -V WORK_CONFIG_DIR -V WORK_LIST
