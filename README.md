@@ -15,3 +15,6 @@ fisher install guillaumearm/work.fish
 work help
 ```
 
+![image](https://user-images.githubusercontent.com/16897658/135200166-eae31e7d-b9ba-48cb-9fd4-8d064fbe4661.png)
+
+
