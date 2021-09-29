@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
 
-set -l WORK_VERSION "0.6.1"
+set -l WORK_VERSION "0.6.2"
 set -l CMD_NAME "work"
 set -l WORK_CONFIG_DIR "$HOME/.config/work"
 set -l WORK_LIST "$WORK_CONFIG_DIR/worklist"
@@ -28,7 +28,7 @@ end
 ### HELP AND USAGE ###
 
 set -l list_usage "list" "[--raw/-r]" "			" "List all available workspaces"
-set -l go_usage "go" "<workspace>" "			" "Change directory to a given workspace (use 'list' command)"
+set -l go_usage "go" "<workspace>" "			" "Change directory to a given workspace"
 set -l create_usage "create" "[--force/-f] <dir> [name]" "	" "Create a workspace with the given directory"
 set -l remove_usage "remove" "<workspace> [others...]" "	" "Remove a workspace"
 set -l help_usage "help" "[command]" "			" "Print help page about a command"
@@ -101,17 +101,17 @@ end
 
 function _print_all_help_commands -V list_usage -V go_usage -V create_usage -V remove_usage -V help_usage -V version_usage
   echo "Commands:"
-  _print_command $list_usage
   _print_command $go_usage
   _print_command $create_usage
   _print_command $remove_usage
+  _print_command $list_usage
   _print_command $help_usage
   _print_command $version_usage
   echo
   echo "Aliases:"
-  _print_alias $list_usage ls "					"
   _print_alias $create_usage add "					"
   _print_alias $remove_usage rm "					"
+  _print_alias $list_usage ls "					"
 end
 
 function _print_special_help -V CMD_NAME -V normal -V blue -V purple -V list_usage -V go_usage -V create_usage -V remove_usage -V help_usage -V version_usage
@@ -129,6 +129,10 @@ function _print_special_help -V CMD_NAME -V normal -V blue -V purple -V list_usa
     echo
     echo "Options:"
     echo "  $blue-i$normal, $blue--interactive$normal		Interactive mode (use fzf)"
+    echo
+    echo "Tips:"
+    echo "  - try 'work ls' to get available workspaces"
+    echo "  - try 'work create .' to create a workspace with the current working directory"
   else if test "$cmd_name" = "create"; or test "$cmd_name" = "add"
     _print_help_command $create_usage $cmd_name
     echo
